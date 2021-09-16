@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>News App</title>
+        <link rel="stylesheet" href="./styles/style.css" />
+    </head>
+
+    <body>
+        <header>
+            <div class="header-left-cont">
+                <div class="logo-cont">
+                    <a href="./index.html" class="logo-link"><span class="logo">News App</span></a>
+                </div>
+                <div class="search-cont">
+                    <button class="search-icon-btn">
+                        <img src="./images/icons/search.png" alt="Search img" class="search-icon" />
+                    </button>
+                    <input type="search" class="search-box" id="search" placeholder="Type something to start search" />
+                </div>
+            </div>
+            <div class="header-right-cont">
+                <nav class="navigation-theme-cont">
+                    <div class="dropdown">
+                        <li class="navigation-theme"><a class="navigation-btn dropbtn" id="dropbtn">Categories</a></li>
+                        <div class="dropdown-content">
+                            <div class="dropdown-left-cont">
+                                <a href="index.html?category=sport" data-category="sport" class="dropdown-link">
+                                    Sport
+                                </a>
+                                <a href="index.html?category=world" data-category="world" class="dropdown-link">
+                                    World
+                                </a>
+                                <a href="index.html?category=covid" data-category="covid" class="dropdown-link">
+                                    Covid
+                                </a>
+                                <a href="index.html?category=business" data-category="business" class="dropdown-link">
+                                    Business
+                                </a>
+                            </div>
+                            <div class="dropdown-right-cont">
+                                <a href="index.html?category=politics" data-category="politics" class="dropdown-link">
+                                    Politics
+                                </a>
+                                <a href="index.html?category=science" data-category="science" class="dropdown-link">
+                                    Science
+                                </a>
+                                <a href="index.html?category=religion" data-category="religion" class="dropdown-link">
+                                    Religion
+                                </a>
+                                <a href="index.html?category=health" data-category="health" class="dropdown-link">
+                                    Health
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <li class="navigation-theme">
+                        <a href="index.html?category=trending" data-category="trending" class="navigation-btn">
+                            ⚡️ Trending news
+                        </a>
+                    </li>
+                </nav>
+
+                <div class="burger-cont">
+                    <button class="burger" id="burger-btn">
+                        <img src="./images/icons/burger-menu.png" alt="Burger-button" />
+                    </button>
+                    <button class="burger-close" id="burger-close-btn">
+                        <img src="./images/icons/burger-close.png" alt="Burger-close-button" />
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main class="container" id="container"></main>
+        <div class="loader">Loading...</div>
+        <footer>
+            <div class="copyrights">
+                <p><span>News App</span> 2021 copyright all rights reserved</p>
+            </div>
+        </footer>
+        <div class="scroll-top-cont" id="scroll-botton">
+            <a class="scroll-btn">Scroll Top</a>
+            <img src="./images/icons/scrl_top.png" class="scroll-img" />
+        </div>
+        <script src="./scripts/burger-menu.js"></script>
+        <script src="./scripts/news-api-loader.js"></script>
+        <script src="./scripts/scroll-top-btn.js"></script>
+    </body>
+</html>
