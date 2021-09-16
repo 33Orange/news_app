@@ -82,9 +82,9 @@ function renderItem(item) {
     newsText.innerHTML = item.fields.bodyText.substring(0, 80) + "...";
     image.src = item.fields.thumbnail;
     newsSrc3.innerHTML = "Read more";
-    newsSrc.href = `news_app/inner.html?post=${item.id}`;
-    newsSrc2.href = `news_app/inner.html?post=${item.id}`;
-    newsSrc3.href = `news_app/inner.html?post=${item.id}`;
+    newsSrc.href = `/inner.html?post=${item.id}`;
+    newsSrc2.href = `/inner.html?post=${item.id}`;
+    newsSrc3.href = `/inner.html?post=${item.id}`;
 
     // Собираем дивы
     // Див с картинкой
