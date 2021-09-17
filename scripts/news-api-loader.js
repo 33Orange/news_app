@@ -1,4 +1,11 @@
 let container = document.getElementById("container");
+let search = document.getElementById("search");
+let lastFetchedPosts;
+
+//Форматируем название новости по длине.
+function sortTitleLength(webTitle) {
+    return webTitle.length > 50 ? webTitle.substring(0, 50) + "..." : webTitle;
+}
 
 //Создаём функцию для рендера новости.
 function renderItem(item) {
@@ -66,19 +73,10 @@ function renderItem(item) {
     } else if (monthNum === 11) {
         month = "December";
     }
-    //Сортируем название новости по длине.
-    function sortTitleLength() {
-        if (item.webTitle.length > 50) {
-            return item.webTitle.substring(0, 50) + "...";
-        } else {
-            return item.webTitle;
-        }
-    }
 
     //Генерируем контент внутри элементов
     newsData.innerHTML = `${month} ${day} ${year}`;
-    newsTitle.innerHTML = sortTitleLength();
-    // newsTitle.innerHTML = item.webTitle.substring(0, 50) + "...";
+    newsTitle.innerHTML = sortTitleLength(item.webTitle);
     newsText.innerHTML = item.fields.bodyText.substring(0, 80) + "...";
     image.src = item.fields.thumbnail;
     newsSrc3.innerHTML = "Read more";
@@ -110,6 +108,7 @@ function renderItem(item) {
 function saveToLocalStorage(data) {
     localStorage.setItem("data", JSON.stringify(data));
 }
+
 //Функиция активации/деактивации анимации подгрузки:
 function loaderOn() {
     document.querySelector(".loader").style.display = "block";
@@ -119,11 +118,27 @@ function loaderOff() {
     document.querySelector(".loader").style.display = "none";
     document.querySelector("footer").style.display = "block";
 }
+//Отслеживаем изменения input в поиске
+search.addEventListener("input", (e) => {
+    onSearchByInput(e.target.value);
+});
+
+//Функция поиска по словам из input
+function onSearchByInput(value) {
+    lookingPosts = lastFetchedPosts.filter((item) => item.webTitle.includes(value));
+    //Если нашли подходящую новость - очищаем контейнер и рендерим подходящую
+    if (lookingPosts) {
+        container.replaceChildren();
+        lookingPosts.forEach((post) => renderItem(post));
+    }
+    document.querySelector(".news-cont").classList.add("hot-news");
+}
 
 // Функция граба обьектов из API с выбраной категорией. По дефолту кат. = тренды
 // Pagesize- кол-во новостей.
 function fetchPosts(category = "trending", pagesize = "19") {
     let url = `https://content.guardianapis.com/search?q=${category}&show-tags=all&page-size=${pagesize}&show-fields=all&order-by=relevance&api-key=0cc1c5bc-7fe4-47bc-80cc-f17c13be193c`;
+    //Добавляем лоадер перед промисом и после. Что бы он отображался во время загрузки
     loaderOn();
     fetch(url)
         .then((response) => {
@@ -132,25 +147,24 @@ function fetchPosts(category = "trending", pagesize = "19") {
         .then((result) => {
             //Создаём массив data из результатов response с key: results
             let data = result?.response?.results;
-            //Очищаем контейнер
-            container.replaceChildren();
+            lastFetchedPosts = data;
             // Сортируем массив по дате:
-            data.sort(function (a, b) {
+            data.sort((a, b) => {
                 var c = new Date(a.webPublicationDate);
                 var d = new Date(b.webPublicationDate);
                 return d - c;
             });
-            console.log(data);
             //Сохраняем данные data в localstorage.
             saveToLocalStorage(data);
+            //Очищаем контейнер
+            container.replaceChildren();
             //рендерим новости из data.
             data.forEach(renderItem);
+
             //Делаем первую новость - главной.
-            data.forEach((value, index = 0) => {
-                document.querySelector(".news-cont").classList.add("hot-news");
-            });
-            loaderOff();
-        });
+            document.querySelector(".news-cont").classList.add("hot-news");
+        })
+        .finally(loaderOff);
 }
 //Грабим 'category' из текущей URL и сохраняем
 const category = new URL(window.location.href).searchParams.get("category");

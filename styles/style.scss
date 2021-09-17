@@ -3,6 +3,9 @@
 
 $fontfamily: "Inter";
 
+html {
+    min-width: 340px;
+}
 /* Header with search and burger menu */
 header {
     max-width: 1020px;
@@ -16,7 +19,7 @@ header {
         align-items: center;
         justify-content: space-between;
         .logo-cont {
-            width: 100px;
+            max-width: 100px;
             display: flex;
             align-items: center;
             .logo-link {
@@ -27,11 +30,6 @@ header {
                     font-weight: bold;
                     color: #000000;
                 }
-            }
-            .logo {
-                font-family: $fontfamily;
-                font-size: 20px;
-                font-weight: bold;
             }
         }
         .search-cont {
@@ -458,5 +456,88 @@ footer {
     40% {
         box-shadow: 0 -2em;
         height: 5em;
+    }
+}
+
+/* Adaptive */
+
+@media screen and (max-width: 900px) {
+    header {
+        .header-left-cont {
+            .logo-cont {
+                .logo-link {
+                    .logo {
+                        font-size: 18px;
+                    }
+                }
+            }
+            .search-cont {
+                max-width: 300px;
+            }
+        }
+        .header-right-cont {
+            .navigation-theme-cont {
+                justify-content: flex-end;
+                .navigation-theme {
+                    .navigation-btn {
+                        margin-left: 40px;
+                    }
+                }
+            }
+        }
+    }
+    .dropdown-content {
+    }
+}
+@media screen and (max-width: 600px) {
+    main {
+        justify-content: space-around;
+        .news-cont {
+            width: 45%;
+            .news-text-cont {
+                .news-title {
+                    font-size: 18px;
+                }
+                .news-text {
+                    margin: 0;
+                }
+            }
+        }
+        .hot-news {
+            width: 100%;
+            .news-text-cont {
+                padding: 15px 25px;
+                height: 80%;
+                .news-title {
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 390px) {
+    main {
+        justify-content: center;
+        .news-cont {
+            width: 90%;
+            .news-text-cont {
+                .news-title {
+                    font-size: 18px;
+                }
+                .news-text {
+                    margin: 0;
+                }
+            }
+        }
+        .hot-news {
+            width: 100%;
+            .news-text-cont {
+                padding: 15px 25px;
+                height: 80%;
+                .news-title {
+                    font-size: 25px;
+                }
+            }
+        }
     }
 }

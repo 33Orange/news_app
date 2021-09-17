@@ -342,6 +342,10 @@ template {
   display: none;
 }
 
+html {
+  min-width: 340px;
+}
+
 /* Header with search and burger menu */
 header {
   max-width: 1020px;
@@ -367,7 +371,7 @@ header .header-left-cont {
 }
 
 header .header-left-cont .logo-cont {
-  width: 100px;
+  max-width: 100px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -385,12 +389,6 @@ header .header-left-cont .logo-cont .logo-link .logo {
   font-size: 20px;
   font-weight: bold;
   color: #000000;
-}
-
-header .header-left-cont .logo-cont .logo {
-  font-family: "Inter";
-  font-size: 20px;
-  font-weight: bold;
 }
 
 header .header-left-cont .search-cont {
@@ -992,6 +990,77 @@ footer .copyrights span {
     -webkit-box-shadow: 0 -2em;
             box-shadow: 0 -2em;
     height: 5em;
+  }
+}
+
+/* Adaptive */
+@media screen and (max-width: 900px) {
+  header .header-left-cont .logo-cont .logo-link .logo {
+    font-size: 18px;
+  }
+  header .header-left-cont .search-cont {
+    max-width: 300px;
+  }
+  header .header-right-cont .navigation-theme-cont {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+  header .header-right-cont .navigation-theme-cont .navigation-theme .navigation-btn {
+    margin-left: 40px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  main .news-cont {
+    width: 45%;
+  }
+  main .news-cont .news-text-cont .news-title {
+    font-size: 18px;
+  }
+  main .news-cont .news-text-cont .news-text {
+    margin: 0;
+  }
+  main .hot-news {
+    width: 100%;
+  }
+  main .hot-news .news-text-cont {
+    padding: 15px 25px;
+    height: 80%;
+  }
+  main .hot-news .news-text-cont .news-title {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  main {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  main .news-cont {
+    width: 90%;
+  }
+  main .news-cont .news-text-cont .news-title {
+    font-size: 18px;
+  }
+  main .news-cont .news-text-cont .news-text {
+    margin: 0;
+  }
+  main .hot-news {
+    width: 100%;
+  }
+  main .hot-news .news-text-cont {
+    padding: 15px 25px;
+    height: 80%;
+  }
+  main .hot-news .news-text-cont .news-title {
+    font-size: 25px;
   }
 }
 /*# sourceMappingURL=style.css.map */
