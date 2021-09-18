@@ -660,6 +660,7 @@ main .main-info {
 }
 
 main .main-info .main-title {
+  text-align: center;
   color: #2d3748;
   font-family: "Inter";
   font-weight: 700;
