@@ -298,8 +298,13 @@ main {
         }
         .news-text-cont {
             width: 50%;
+            height: 100%;
             order: 1;
-            padding: 41px 55px;
+            padding: 0 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
             .news-title {
                 margin: 0;
                 color: #2d3748;
@@ -504,8 +509,8 @@ footer {
         .hot-news {
             width: 100%;
             .news-text-cont {
-                padding: 15px 25px;
-                height: 80%;
+                padding: 0 10px;
+                height: 100%;
                 .news-title {
                     font-size: 25px;
                 }

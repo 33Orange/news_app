@@ -8,100 +8,38 @@ function sortTitleLength(webTitle) {
 }
 
 //Создаём функцию для рендера новости.
+//Создаём функцию для рендера новости.
 function renderItem(item) {
-    //Контейнер новости:
-    let newsCont = document.createElement("div");
-    //Контейнер изображения с изображением:
-    let newsImgCont = document.createElement("div");
-    let newsSrc = document.createElement("a");
-    let newsSrc2 = document.createElement("a");
-    let newsSrc3 = document.createElement("a");
-    let image = document.createElement("img");
-    //Контейнер для текста с текстовыми элементами:
-    let newsTextCont = document.createElement("div");
-    let newsTitle = document.createElement("h1");
-    let newsText = document.createElement("p");
-    //Контейнер для даты публикации и Read more
-    let newsDataCont = document.createElement("div");
-    let newsData = document.createElement("span");
-    let readMore = document.createElement("span");
-    //Общий контейнер для создания новостей:
-
-    // Задаём классы всем элементам.
-    newsCont.classList.add("news-cont");
-    newsImgCont.classList.add("news-img-cont");
-    newsSrc.classList.add("news-src");
-    newsSrc2.classList.add("news-src");
-    newsSrc3.classList.add("news-src");
-    image.classList.add("news-img");
-    newsTextCont.classList.add("news-text-cont");
-    newsTitle.classList.add("news-title");
-    newsText.classList.add("news-text");
-    newsDataCont.classList.add("news-theme-readm-cont");
-    newsData.classList.add("news-data");
-    readMore.classList.add("read-more");
-
     // Форматируем дату до DD-MM:
     let date = new Date(item.webPublicationDate);
     let day = date.getDate().toString();
-    let month = "";
-    let monthNum = date.getMonth();
+    let month = date.toLocaleString("en-US", { month: "long" });
     let year = date.getFullYear();
 
-    if (monthNum === 0) {
-        month = "January";
-    } else if (monthNum === 1) {
-        month = "February";
-    } else if (monthNum === 2) {
-        month = "March";
-    } else if (monthNum === 3) {
-        month = "April";
-    } else if (monthNum === 4) {
-        month = "May";
-    } else if (monthNum === 5) {
-        month = "June";
-    } else if (monthNum === 6) {
-        month = "July";
-    } else if (monthNum === 7) {
-        month = "August";
-    } else if (monthNum === 8) {
-        month = "September";
-    } else if (monthNum === 9) {
-        month = "October";
-    } else if (monthNum === 10) {
-        month = "November";
-    } else if (monthNum === 11) {
-        month = "December";
-    }
+    const newsItemDate = `${month} ${day} ${year}`;
+    const newsItemText = item.fields.bodyText.substring(0, 80) + "...";
 
-    //Генерируем контент внутри элементов
-    newsData.innerHTML = `${month} ${day} ${year}`;
-    newsTitle.innerHTML = sortTitleLength(item.webTitle);
-    newsText.innerHTML = item.fields.bodyText.substring(0, 80) + "...";
-    image.src = item.fields.thumbnail;
-    newsSrc3.innerHTML = "Read more";
-    newsSrc.href = `inner.html?post=${item.id}`;
-    newsSrc2.href = `inner.html?post=${item.id}`;
-    newsSrc3.href = `inner.html?post=${item.id}`;
+    const newsItem = `
+        <div class="news-cont">
+            <div class="news-img-cont">
+                <a class="news-src" href="inner.html?post=${item.id}">
+                    <img class="news-img" src="${item.fields.thumbnail}"></a>
+                </div>
+                <div class="news-text-cont">
+                    <a class="news-src" href="inner.html?post=${item.id}">
+                        <h3 class="news-title">${sortTitleLength(item.webTitle)}</h3>
+                    </a>
+                    <p class="news-text">${newsItemText}</p>
+                    <div class="news-theme-readm-cont"><span class="news-data">${newsItemDate}</span><span class="read-more">
+                        <a class="news-src" href="inner.html?post=${item.id}">Read more</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    `;
+    const newsFragment = document.createRange().createContextualFragment(newsItem);
 
-    // Собираем дивы
-    // Див с картинкой
-    newsSrc.appendChild(image);
-    newsImgCont.appendChild(newsSrc);
-    // Див с текстом
-    newsSrc2.appendChild(newsTitle);
-    newsTextCont.appendChild(newsSrc2);
-    newsTextCont.appendChild(newsText);
-    // Див с ридми и датой
-    readMore.appendChild(newsSrc3);
-    newsDataCont.appendChild(newsData);
-    newsDataCont.appendChild(readMore);
-    newsTextCont.appendChild(newsDataCont);
-    // Соединяем все дивы в контейнере для новости:
-    newsCont.appendChild(newsImgCont);
-    newsCont.appendChild(newsTextCont);
-    //Передаём созданный новостной-контейнер в app:
-    container.appendChild(newsCont);
+    container.appendChild(newsFragment);
 }
 
 //Функция сохранения данных в localstorage.
@@ -160,7 +98,6 @@ function fetchPosts(category = "trending", pagesize = "19") {
             container.replaceChildren();
             //рендерим новости из data.
             data.forEach(renderItem);
-
             //Делаем первую новость - главной.
             document.querySelector(".news-cont").classList.add("hot-news");
         })
@@ -171,7 +108,3 @@ const category = new URL(window.location.href).searchParams.get("category");
 
 //Фетчим новости и генерируем нужное кол-во постов
 fetchPosts(category, 49);
-
-// + отдельная страница с деталкой поста
-// + поиск по категориям
-// поиск текстовый
