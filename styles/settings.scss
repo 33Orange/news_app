@@ -1,0 +1,10 @@
+// Font
+@import url(https://fonts.googleapis.com/css?family=Inter:regular,600,700);
+$fontfamily: "Inter";
+
+// MIXINES ===========================================
+@mixin dflex($j, $a) {
+    display: flex;
+    justify-content: $j;
+    align-items: $a;
+}

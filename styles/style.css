@@ -6,6 +6,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
+@import url(https://fonts.googleapis.com/css?family=Inter:regular,600,700);
 html {
   line-height: 1.15;
   /* 1 */
@@ -342,10 +343,6 @@ template {
   display: none;
 }
 
-html {
-  min-width: 340px;
-}
-
 /* Header with search and burger menu */
 header {
   max-width: 1020px;
@@ -362,12 +359,12 @@ header .header-left-cont {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 header .header-left-cont .logo-cont {
@@ -375,6 +372,9 @@ header .header-left-cont .logo-cont {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -392,14 +392,14 @@ header .header-left-cont .logo-cont .logo-link .logo {
 }
 
 header .header-left-cont .search-cont {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   width: 350px;
   height: 32px;
   border-radius: 4px;
   border: none;
   background-color: #f2f2f2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -576,15 +576,16 @@ header .header-right-cont .burger-cont .burger-close {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 .dropdown-content .dropdown-left-cont .dropdown-link {
@@ -607,15 +608,16 @@ header .header-right-cont .burger-cont .burger-close {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 .dropdown-content .dropdown-right-cont .dropdown-link {
@@ -631,6 +633,29 @@ header .header-right-cont .burger-cont .burger-close {
 
 .dropdown-content .dropdown-right-cont .dropdown-link:hover {
   color: #2f80ed;
+}
+
+/* Adaptive */
+@media screen and (max-width: 900px) {
+  header .header-left-cont .logo-cont .logo-link .logo {
+    font-size: 18px;
+  }
+  header .header-left-cont .search-cont {
+    max-width: 300px;
+  }
+  header .header-right-cont .navigation-theme-cont {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+  header .header-right-cont .navigation-theme-cont .navigation-theme .navigation-btn {
+    margin-left: 40px;
+  }
+}
+
+/* min-width for old mobiles */
+html {
+  min-width: 340px;
 }
 
 /* Main News content */
@@ -661,16 +686,16 @@ main .news-cont {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-shadow: 0px 4px 4px rgba(192, 189, 189, 0.25);
           box-shadow: 0px 4px 4px rgba(192, 189, 189, 0.25);
   border-radius: 5px;
@@ -695,16 +720,16 @@ main .news-cont .news-text-cont {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   padding: 5px;
 }
 
@@ -767,16 +792,16 @@ main .hot-news {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   border-radius: 6px;
   -webkit-box-shadow: 0px 4px 4px 0px #00000040;
           box-shadow: 0px 4px 4px 0px #00000040;
@@ -810,15 +835,15 @@ main .hot-news .news-text-cont {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 main .hot-news .news-text-cont .news-title {
@@ -847,6 +872,9 @@ main .hot-news .news-text-cont .news-theme-readm-cont {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   margin-top: 30px;
 }
 
@@ -877,7 +905,9 @@ footer .copyrights {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  justify-self: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -915,6 +945,8 @@ footer .copyrights span {
   z-index: 99;
   bottom: 10%;
   right: 10%;
+  -webkit-animation: fade 400ms linear;
+          animation: fade 400ms linear;
 }
 
 .scroll-top-cont:hover {
@@ -1007,23 +1039,6 @@ footer .copyrights span {
 }
 
 /* Adaptive */
-@media screen and (max-width: 900px) {
-  header .header-left-cont .logo-cont .logo-link .logo {
-    font-size: 18px;
-  }
-  header .header-left-cont .search-cont {
-    max-width: 300px;
-  }
-  header .header-right-cont .navigation-theme-cont {
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
-  }
-  header .header-right-cont .navigation-theme-cont .navigation-theme .navigation-btn {
-    margin-left: 40px;
-  }
-}
-
 @media screen and (max-width: 600px) {
   main {
     -ms-flex-pack: distribute;

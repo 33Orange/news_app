@@ -8,7 +8,6 @@ function sortTitleLength(webTitle) {
 }
 
 //Создаём функцию для рендера новости.
-//Создаём функцию для рендера новости.
 function renderItem(item) {
     // Форматируем дату до DD-MM:
     let date = new Date(item.webPublicationDate);

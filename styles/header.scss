@@ -1,0 +1,203 @@
+@import "settings";
+
+/* Header with search and burger menu */
+header {
+    max-width: 1020px;
+    margin: 0 auto;
+    height: 60px;
+    display: flex;
+    .header-left-cont {
+        width: 50%;
+        justify-self: flex-start;
+        @include dflex(space-between, center);
+        .logo-cont {
+            max-width: 100px;
+            @include dflex(flex-start, center);
+            .logo-link {
+                text-decoration: none;
+                .logo {
+                    font-family: $fontfamily;
+                    font-size: 20px;
+                    font-weight: bold;
+                    color: #000000;
+                }
+            }
+        }
+        .search-cont {
+            width: 350px;
+            height: 32px;
+            border-radius: 4px;
+            border: none;
+            background-color: #f2f2f2;
+            @include dflex(center, center);
+            .search-box {
+                width: 90%;
+                height: 100%;
+                border: none;
+                background-color: #f2f2f2;
+                font-family: $fontfamily;
+                text-align: left;
+                font-size: 14px;
+                border-radius: 4px;
+            }
+            .search-icon-btn {
+                margin-left: 10px;
+                border: none;
+                background-color: #f2f2f2;
+                @include dflex(center, center);
+                .search-icon {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+    .header-right-cont {
+        width: 50%;
+        height: 60px;
+        justify-self: flex-end;
+        @include dflex(flex-end, center);
+        .navigation-theme-cont {
+            width: 90%;
+            display: none;
+            justify-content: center;
+            align-content: center;
+            .navigation-theme {
+                display: inline-block;
+                list-style-type: none;
+                .navigation-btn {
+                    text-decoration: none;
+                    color: #000;
+                    font-family: $fontfamily;
+                    font-size: 14px;
+                    margin-left: 70px;
+                    transition: color 300ms;
+                    cursor: pointer;
+                    &:hover {
+                        color: #2f80ed;
+                    }
+                }
+            }
+        }
+        .burger-cont {
+            width: 10%;
+            @include dflex(center, center);
+            .burger {
+                display: block;
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+            .burger-close {
+                background: none;
+                border: none;
+                display: none;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+/* DropDown menu with categories */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    transition: all 400ms;
+    &:hover {
+        .dropdown-content {
+            display: flex;
+        }
+    }
+}
+.dropdown-content:before {
+    content: "";
+    position: absolute;
+    border-left: 10px solid rgba(113, 101, 58, 0);
+    border-right: 10px solid rgba(113, 101, 58, 0);
+    border-bottom: 10px solid #fff;
+    top: -7px;
+}
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.dropdown-content {
+    display: none;
+    justify-content: center;
+    position: absolute;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px #bdbdbd;
+    width: 220px;
+    height: 90px;
+    animation: fade 200ms linear;
+    transition: all 400ms;
+    z-index: 2;
+    background-color: #fff;
+    .dropdown-left-cont {
+        width: 50%;
+        @include dflex(center, center);
+        flex-direction: column;
+        .dropdown-link {
+            text-align: center;
+            text-decoration: none;
+            font-family: $fontfamily;
+            font-size: 14px;
+            color: #000;
+            margin-top: 5px;
+            transition: color 500ms;
+            &:hover {
+                color: #2f80ed;
+            }
+        }
+    }
+    .dropdown-right-cont {
+        width: 50%;
+        @include dflex(center, center);
+        flex-direction: column;
+        .dropdown-link {
+            text-align: center;
+            text-decoration: none;
+            font-family: $fontfamily;
+            font-size: 14px;
+            color: #000;
+            margin-top: 5px;
+            transition: color 500ms;
+            &:hover {
+                color: #2f80ed;
+            }
+        }
+    }
+}
+
+/* Adaptive */
+
+@media screen and (max-width: 900px) {
+    header {
+        .header-left-cont {
+            .logo-cont {
+                .logo-link {
+                    .logo {
+                        font-size: 18px;
+                    }
+                }
+            }
+            .search-cont {
+                max-width: 300px;
+            }
+        }
+        .header-right-cont {
+            .navigation-theme-cont {
+                justify-content: flex-end;
+                .navigation-theme {
+                    .navigation-btn {
+                        margin-left: 40px;
+                    }
+                }
+            }
+        }
+    }
+}
